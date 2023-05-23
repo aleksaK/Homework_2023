@@ -20,7 +20,7 @@ public class GroovyScriptResolver {
 
     public Object runMethodFromBaseScript(String methodName) {
         try {
-            Script script = shell.parse(new File("src/main/java/org/example/scripts/base/", "BaseScript.groovy"));
+            Script script = shell.parse(new File("src/main/java/org/example/core/scripts/base/", "BaseScript.groovy"));
             return script.invokeMethod(methodName, null);
         }
         catch (IOException e) {
@@ -30,7 +30,7 @@ public class GroovyScriptResolver {
 
     public Object runScript(String scriptName) {
         try {
-            Script script = shell.parse(new File("src/main/java/org/example/scripts/", scriptName));
+            Script script = shell.parse(new File("src/main/java/org/example/core/scripts/", scriptName));
             return script.run();
         }
         catch (IOException e) {
@@ -40,7 +40,7 @@ public class GroovyScriptResolver {
 
     public Object runMethodFromScript(String scriptName, String methodName, Object arg) {
         try {
-            Script script = shell.parse(new File("src/main/java/org/example/scripts/", scriptName));
+            Script script = shell.parse(new File("src/main/java/org/example/core/scripts/", scriptName));
             return script.invokeMethod(methodName, arg);
         }
         catch (IOException e) {

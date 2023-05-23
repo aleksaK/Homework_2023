@@ -5,11 +5,14 @@ import java.util.List;
 
 public class Bicycle {
 
-    private final String make;
-    private final String model;
-    private final int manufactureYear;
-    private final BigDecimal sumInsured;
-    private final List<RiskType> risks;
+    private String make;
+    private String model;
+    private int manufactureYear;
+    private BigDecimal sumInsured;
+    private List<RiskType> risks;
+
+    public Bicycle() {
+    }
 
     public Bicycle(String make, String model, int manufactureYear, BigDecimal sumInsured, List<RiskType> risks) {
         this.make = make;

@@ -18,7 +18,7 @@ public class CalculatorController {
     @PostMapping(path = "/calculator/",
             consumes = "application/json",
             produces = "application/json")
-    public double calculatePremium(@RequestBody Policy policy) {
+    public Double calculatePremium(@RequestBody Policy policy) {
         return service.calculateTotalPremium(policy);
     }
 
