@@ -18,12 +18,12 @@ public class ClientRequestDemo {
         RestTemplate restTemplate = new RestTemplate();
         Policy policy = new Policy(List.of(bicycle1, bicycle2, bicycle3));
         String url = "http://localhost:8080/calculator/";
-        Double premium = restTemplate.postForObject(url, policy, Double.class);
-        System.out.println("PREMIUM: " + premium);
 
-        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-        String json = ow.writeValueAsString(policy);
-        System.out.println(json);
+        System.out.println("Request JSON body:");
+        System.out.println(getJSONRequest(policy));
+
+        Double premium = restTemplate.postForObject(url, policy, Double.class);
+        System.out.println("POLICY PREMIUM CALCULATED: " + premium);
 
     }
 
@@ -41,5 +41,10 @@ public class ClientRequestDemo {
             "OTHER", "OTHER", 2019, new BigDecimal(100),
             List.of(RiskType.DAMAGE, RiskType.THIRD_PARTY_DAMAGE)
     );
+
+    private static String getJSONRequest(Policy policy) throws JsonProcessingException {
+        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+        return ow.writeValueAsString(policy);
+    }
 
 }

@@ -1,10 +1,14 @@
 package org.example.core.domain;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
+
 import java.util.List;
 
 public class Policy {
 
-    private List<Bicycle> bicycles;
+    @Size(min = 1, message = "At least one bicycle is required")
+    private List<@Valid Bicycle> bicycles;
 
     public Policy() {
     }
