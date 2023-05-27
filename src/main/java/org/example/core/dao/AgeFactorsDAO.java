@@ -63,6 +63,7 @@ public class AgeFactorsDAO {
                     .orElse(null);
         }
         return factors;
+
     }
 
     private Predicate<LinkedHashMap<String, Serializable>> isMakeCriteriaMatched(Bicycle bicycle) {

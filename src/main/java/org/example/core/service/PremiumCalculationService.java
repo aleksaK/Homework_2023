@@ -41,20 +41,16 @@ public class PremiumCalculationService {
                 .reduce(0., Double::sum);
     }
 
-
     private Double calculateBicyclePremium(Bicycle bicycle) {
-
         return bicycle.getRisks().stream()
                 .map(risk -> getCalculationData(bicycle, risk))
                 .map(data -> (Double) scriptResolver.runMethodFromScript(
                         data.getRiskType().getRiskName() + "RiskPremiumCalc.groovy", "calculatePremium", data
                 ))
                 .reduce(0., Double::sum);
-
     }
 
     private PremiumCalculationData getCalculationData(Bicycle bicycle, RiskType risk) {
-
         return new PremiumCalculationData(
                 risk,
                 bicycle.getSumInsured(),
@@ -65,7 +61,6 @@ public class PremiumCalculationService {
                 sumInsuredFactors.getSumInsuredFactors(bicycle.getSumInsured()),
                 ageFactors.getAgeFactors(bicycle)
         );
-
     }
 
     private BigDecimal calculateRiskSumInsured(RiskType risk, BigDecimal objectSumInsured) {
